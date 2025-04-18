@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development', // Use 'production' for production builds
   entry: './src/index.jsx', // Entry point of your React code
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '..', 'backend', 'src', 'main', 'resources', 'static'),
     filename: 'bundle.js',
     publicPath: '/', // For SPA routing support
   },
