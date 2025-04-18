@@ -6,8 +6,14 @@ function Home() {
   // Call the backend API endpoint to fetch the "Hello World" message
   const getHello = () => {
     fetch('/api/hello')
-      .then(response => response.text())
-      .then(data => setMessage(data))
+      .then(response => {
+        console.log('Response:', response);
+        return response.text();
+      })
+      .then(data => {
+        console.log('Response.text() (After Promise Returns):', data);
+        return setMessage(data);
+      })
       .catch(err => {
         console.error("Failed to getHello: ", err);
         setMessage("Error loading message.");
