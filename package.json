@@ -1,0 +1,17 @@
+{
+  "name": "proctor-planner",
+  "version": "1.0.0",
+  "description": "Proctor Planner is designed to help testing coordinators plan for testing periods.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "cd backend && mvn spring-boot:run",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
