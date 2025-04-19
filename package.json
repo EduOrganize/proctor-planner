@@ -9,7 +9,7 @@
     "frontend": "cd frontend && npm start",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
-  "author": "",
+  "author": "Former Educators",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^9.1.2"
