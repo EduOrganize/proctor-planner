@@ -1,10 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
   mode: 'development', // Use 'production' for production builds
-  entry: './src/index.jsx', // Entry point of your React code
+  entry: './frontend/src/index.jsx', // Entry point of your React code
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -30,7 +29,7 @@ module.exports = {
     hot: true,                 // enable hot‑reload
     historyApiFallback: true,  // for client‑side routing
     proxy: [
-      // any request to /api/* will be forwarded to your Spring Boot server
+      // any request to /api/* will be forwarded to your Node server
       {
         context: ['/api'],
         target: 'http://localhost:8080',
@@ -41,19 +40,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html' // Template HTML file
-    }),
-    new FileManagerPlugin({
-      events: {
-        onEnd: {
-          copy: [
-            {
-              source: path.resolve(__dirname, 'dist/**/*'),
-              destination: path.resolve(__dirname, '../backend/src/main/resources/static')
-            }
-          ]
-        }
-      }
+      template: './frontend/public/index.html' // Template HTML file
     }),
   ],
 };
