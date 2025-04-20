@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development', // Use 'production' for production builds
-  entry: './src/index.jsx', // Entry point of your React code
+  entry: './frontend/src/index.jsx', // Entry point of your React code
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -40,7 +40,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html' // Template HTML file
+      template: './frontend/public/index.html' // Template HTML file
     }),
   ],
 };
