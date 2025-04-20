@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "backend": "cd backend && mvn spring-boot:run",
-    "frontend": "cd frontend && npm start",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+    "build": "webpack --mode production",
+    "start": "node ./backend/server/index.js",
+    "dev": "concurrently \"npm start\" \"webpack serve --mode development\""
   },
   "author": "Former Educators",
   "license": "ISC",
