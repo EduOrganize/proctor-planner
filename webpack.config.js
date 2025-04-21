@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
   mode: 'development', // Use 'production' for production builds
-  entry: './frontend/src/index.jsx', // Entry point of your React code
+  entry: './frontend/src/index.tsx', // Entry point of your React code
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -12,14 +13,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.[jt]sx?$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       }
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'], // Allow imports without specifying extensions
+    extensions: ['.js', '.jsx', ".ts", ".tsx"], // Allow imports without specifying extensions
   },
   devServer: {
     static: {
@@ -42,5 +43,21 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './frontend/public/index.html' // Template HTML file
     }),
+    new FileManagerPlugin({
+      events: {
+        onEnd: {
+          copy: [
+            {
+              source: path.resolve(__dirname, 'dist/bundle.js'),
+              destination: path.resolve(__dirname, 'dist/dist/bundle.js')
+            },
+            {
+              source: path.resolve(__dirname, 'dist/index.html'),
+              destination: path.resolve(__dirname, 'dist/dist/index.html')
+            },
+          ]
+        }
+      }
+    })
   ],
 };
